@@ -49,6 +49,7 @@
             this.mainMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStartGame = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGameExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.lTimer = new System.Windows.Forms.Label();
             this.tableLayoutPanel.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -346,11 +347,21 @@
             this.menuGameExit.Text = "Выход";
             this.menuGameExit.Click += new System.EventHandler(this.menuGameExit_Click);
             // 
+            // lTimer
+            // 
+            this.lTimer.AutoSize = true;
+            this.lTimer.Location = new System.Drawing.Point(418, 8);
+            this.lTimer.Name = "lTimer";
+            this.lTimer.Size = new System.Drawing.Size(35, 13);
+            this.lTimer.TabIndex = 2;
+            this.lTimer.Text = "label1";
+            // 
             // formGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(465, 456);
+            this.Controls.Add(this.lTimer);
             this.Controls.Add(this.tableLayoutPanel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -387,6 +398,7 @@
         private System.Windows.Forms.ToolStripMenuItem mainMenu;
         private System.Windows.Forms.ToolStripMenuItem menuStartGame;
         private System.Windows.Forms.ToolStripMenuItem menuGameExit;
+        private System.Windows.Forms.Label lTimer;
     }
 }
 

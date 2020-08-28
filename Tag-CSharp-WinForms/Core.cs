@@ -44,7 +44,7 @@ namespace Tag_CSharp_WinForms
             int x, y;
             posToCoords(pos, out x, out y);
 
-            if(Math.Abs(blankX - x) + Math.Abs(blankY - y) != 1)
+            if (Math.Abs(blankX - x) + Math.Abs(blankY - y) != 1)
             {
                 return;
             }
@@ -58,18 +58,57 @@ namespace Tag_CSharp_WinForms
         public void randomShift()
         {
             int pos = random.Next(0, 4);
+            int x = blankX;
+            int y = blankY;
 
+            switch (pos)
+            {
+                case 0:
+                    x--;
+                    break;
+                case 1:
+                    x++;
+                    break;
+                case 2:
+                    y--;
+                    break;
+                case 3:
+                    y++;
+                    break;
+            }
+            shiftButton(coordsToPos(x, y));
         }
 
         private int coordsToPos(int x, int y)
         {
+            if (x < 0) x = 0;
+            if (x > size - 1) x = size - 1;
+            if (y < 0) y = 0;
+            if (y > size - 1) y = size - 1;
             return x * size + y;
         }
-         
+
         private void posToCoords(int position, out int x, out int y)
         {
+            if (position < 0) position = 0;
+            if (position > size * size - 1) position = size * size - 1;
             y = position % size;
             x = position / size;
+        }
+
+        public bool checkForWin()
+        {
+            if (!(blankX == size - 1 && blankY == size - 1)) return false;
+            for(int x = 0; x < size; x++)
+            {
+                for(int y = 0; y < size; y++)
+                {
+                    if(!(x == size -1 && y == size - 1))
+                       if(gameMap[x, y] != coordsToPos(x, y) + 1)
+                            return false;
+                }
+            }
+            return true;
         }
     }
 }

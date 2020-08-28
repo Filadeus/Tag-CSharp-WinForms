@@ -13,10 +13,20 @@ namespace Tag_CSharp_WinForms
     public partial class formGame : Form
     {
         Core game;
+        DateTime date;
         public formGame()
         {
             InitializeComponent();
             game = new Core(4);
+        }
+
+        private void tickTimer(object sender, EventArgs e)
+        {
+            long tick = DateTime.Now.Ticks - date.Ticks;
+            DateTime stopWatch = new DateTime();
+
+            stopWatch = stopWatch.AddTicks(tick);
+            lTimer.Text = String.Format("{0:mm:ss:ff}", stopWatch);
         }
         
         private Button button(int pos)
@@ -55,13 +65,28 @@ namespace Tag_CSharp_WinForms
         private void button0_Click(object sender, EventArgs e)
         {
             int buttonPressed = Convert.ToInt32(((Button)sender).Tag);
+            /*
+            date = DateTime.Now;
+            Timer timer = new Timer();
+            timer.Interval = 10;
+            timer.Tick += new EventHandler(tickTimer);
+            timer.Start();
+            */
             game.shiftButton(buttonPressed);
             fill();
+
+            if (game.checkForWin())
+                //timer.Stop();
+                MessageBox.Show("Вы победили!", "Congrats!");
         }
 
         private void menuStartGame_Click(object sender, EventArgs e)
         {
             game.initGame();
+            for(int i = 0; i < 100; i++)
+            {
+                game.randomShift();
+            }
             fill();
         }
 
