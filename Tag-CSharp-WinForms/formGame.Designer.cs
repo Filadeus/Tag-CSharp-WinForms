@@ -350,11 +350,11 @@
             // lTimer
             // 
             this.lTimer.AutoSize = true;
-            this.lTimer.Location = new System.Drawing.Point(418, 8);
+            this.lTimer.Location = new System.Drawing.Point(404, 8);
             this.lTimer.Name = "lTimer";
-            this.lTimer.Size = new System.Drawing.Size(35, 13);
+            this.lTimer.Size = new System.Drawing.Size(49, 13);
             this.lTimer.TabIndex = 2;
-            this.lTimer.Text = "label1";
+            this.lTimer.Text = "00:00:00";
             // 
             // formGame
             // 
